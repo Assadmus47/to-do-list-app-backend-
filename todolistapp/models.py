@@ -14,6 +14,7 @@ class Task(models.Model):
 class Users (models.Model):
     phone_number=models.CharField(max_length=20)
     user= models.OneToOneField(User ,on_delete=models.CASCADE ,null=True, blank=True)
+    
 
 
     
