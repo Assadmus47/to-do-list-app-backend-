@@ -14,15 +14,19 @@ class TaskViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()  
     serializer_class = TaskSerializer
 
+    def list(self, request, *args, **kwargs):
+        tasks = Task.objects.filter(utilisateur=self.request.user)
+        serializer = TaskSerializer(tasks, many=True)
+        return Response(serializer.data)
 # Create your viewssets to create a user
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()  
-    serializer_class = UsersSerializer
-    def get_queryset(self):
-        # Récupère uniquement les tâches de l'utilisateur connecté
-        return Task.objects.filter(utilisateur=self.request.user)
+# class UserViewSet(viewsets.ModelViewSet):
+#     queryset = User.objects.all()  
+#     serializer_class = UsersSerializer
+#     def get_queryset(self):
+#         # Récupère uniquement les tâches de l'utilisateur connecté
+#         return Task.objects.filter(utilisateur=self.request.user)
 
-    def perform_create(self, serializer):
-        # Associe la tâche à l'utilisateur connecté lors de la création
-        serializer.save(utilisateur=self.request.user)
+#     def perform_create(self, serializer):
+#         # Associe la tâche à l'utilisateur connecté lors de la création
+#         serializer.save(utilisateur=self.request.user)

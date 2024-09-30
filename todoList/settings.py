@@ -37,13 +37,24 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'todolistapp',
     'rest_framework',
     'rest_framework.authtoken',
-    'djoser',
-    'django.contrib.auth',
+    'todolistapp',
+    'dj_rest_auth',
+    
+    
     
 ]
+""" REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'rest_framework.authtoken',
+    'djoser',
+} """
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
