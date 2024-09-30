@@ -9,7 +9,7 @@ class Users (models.Model):
 
 # Create your models here.
 class Task(models.Model):
-    utilisateur = models.ForeignKey(Users, on_delete=models.CASCADE)
+    utilisateur = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)         
     date_creation = models.DateTimeField(auto_now_add=True)  

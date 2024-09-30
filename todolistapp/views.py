@@ -15,7 +15,7 @@ class TaskViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
 
     def list(self, request, *args, **kwargs):
-        tasks = Task.objects.filter(utilisateur=self.request.user)
+        tasks = Task.objects.filter(utilisateur=request.user)
         serializer = TaskSerializer(tasks, many=True)
         return Response(serializer.data)
 # Create your viewssets to create a user
@@ -30,3 +30,4 @@ class TaskViewSet(viewsets.ModelViewSet):
 #     def perform_create(self, serializer):
 #         # Associe la tâche à l'utilisateur connecté lors de la création
 #         serializer.save(utilisateur=self.request.user)
+#custom user models users same attribute as user model plus anothe charfield phone_number
